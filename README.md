@@ -40,22 +40,12 @@ e descompacte dentro da pasta do projeto.
 
 ## Scripts usados em aula
 
-| numero | script                    | link                                                                                            |
-|-------:|:--------------------------|:------------------------------------------------------------------------------------------------|
-|      1 | 01-introducao.R           | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/01-introducao.R>           |
-|      2 | 02-tabelas.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/02-tabelas.R>              |
-|      3 | 03-filtros.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/03-filtros.R>              |
-|      4 | 04-controle-de-fluxo-NA.R | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/04-controle-de-fluxo-NA.R> |
-<<<<<<< HEAD
-=======
-|      5 | 05-loops.R                | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/05-loops.R>                |
-|      6 | 06-loops-2.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/06-loops-2.R>              |
-|      7 | 07-funcoes.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/07-funcoes.R>              |
-|      8 | 08-pipe.R                 | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/08-pipe.R>                 |
-|      9 | 09-instalar-pacotes.R     | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/09-instalar-pacotes.R>     |
-|     10 | 10-manipulacao-arquivos.R | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/10-manipulacao-arquivos.R> |
-|     11 | 11-exemplo-source.R       | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/11-exemplo-source.R>       |
->>>>>>> 638cde5059a473be46749e3aa02b476104769d68
+| script                    | link                                                                                            |
+|:--------------------------|:------------------------------------------------------------------------------------------------|
+| 01-introducao.R           | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/01-introducao.R>           |
+| 02-tabelas.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/02-tabelas.R>              |
+| 03-filtros.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/03-filtros.R>              |
+| 04-controle-de-fluxo-NA.R | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/04-controle-de-fluxo-NA.R> |
 
 ## Dados utilizados
 
@@ -97,6 +87,7 @@ Os dados são derivados da base `voos` disponível no pacote
 |    2 | Extra       | [R Inferno: tudo o que pode dar errado com o R](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)                                                     |
 |    2 | Funções     | [Livro Ciência de Dados em R - Capítulo 4 - Pacotes](https://livro.curso-r.com/4-pacotes.html)                                                            |
 |    2 | Introdução  | [Livro Ciência de Dados em R - Capítulo 3 - R Base](https://livro.curso-r.com/3-r-base.html)                                                              |
+|    3 | Dúvidas     | [Exemplo de Dashboard](http://estatisticas.forumseguranca.org.br/)                                                                                        |
 
 ## Redes sociais da Curso-R
 
