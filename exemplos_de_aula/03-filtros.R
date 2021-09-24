@@ -267,6 +267,30 @@ avaliacoes <- data.frame(avaliacao_do_cliente, estado_de_nascimento)
 
 # 1. Filtre as avaliações superiores a 3.
 
+library(dplyr)
+
+filter(avaliacoes, avaliacao_do_cliente > 3)
+
+avaliacoes[avaliacoes$avaliacao_do_cliente > 3, ]
+
+
 # 2. Filtre as avaliações de SP ou MT.
 
+filter(avaliacoes, estado_de_nascimento %in% c("SP", "MT"))
+filter(avaliacoes, estado_de_nascimento == "SP" | estado_de_nascimento == "MT")
+
+avaliacoes[avaliacoes$estado_de_nascimento %in% c("SP", "MT"), ]
+
 # 3. Filtre as avaliações de PB ou MT com nota inferior a 4.
+
+filter(
+  avaliacoes, 
+  estado_de_nascimento %in% c("PB", "MT"), 
+  avaliacao_do_cliente < 4
+)
+
+avaliacoes[avaliacoes$estado_de_nascimento %in% c("PB", "MT") &
+             avaliacoes$avaliacao_do_cliente < 4, ]
+
+
+

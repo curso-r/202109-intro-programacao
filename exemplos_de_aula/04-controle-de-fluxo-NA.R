@@ -16,11 +16,13 @@ base_de_dados <- read_csv2("dados/voos_de_janeiro.csv")
 
 # estrutura:
 # if(CONDICAO) {
-# ACAO
+#   ACAO
+#   ACAO
+#   ...
+#   ACAO
 # }
 
-
-x <- 1
+x <- 2
 
 if(x == 1) {         
   Sys.time()    
@@ -28,11 +30,20 @@ if(x == 1) {
 
 # if/else: faz uma ação se as condições anteriores não forem atendidas.
 
-x <- 1
+x <- -1
 
 if(x < 0){
   "negativo"
 } else {
+  "não negativo"
+}
+
+# menos eficiente, pois faz dois testes
+if (x < 0) {
+  "negativo"
+}
+
+if (x >= 0) {
   "não negativo"
 }
 
@@ -49,26 +60,43 @@ if(x < 0) {
 # Mais um exemplo de if! Contagem regressiva para o carnaval!
 
 hoje <- Sys.Date()
-carnaval <- as.Date("2021-02-16")
+carnaval <- as.Date("2022-02-24")
 
-if(hoje < carnaval){
+if(hoje < carnaval) {
   
   dias_para_carnaval <- as.numeric(carnaval - hoje) 
   paste("Faltam", dias_para_carnaval, "dias para o carnaval!")
   
 }  else if(hoje == carnaval){
   
-  paste("Hoje é carnaval!")
+  "Hoje é carnaval!"
   
 } else {
   
-  paste("O carnaval de 2021 já passou... agora só ano que vem!")
+  "O carnaval de 2022 já passou... agora só ano que vem!"
   
 }
 
+View(base_de_dados)
+
+if(base_de_dados$atraso_chegada[1] < 0) {
+  "Chegou com antecedência"
+} else if (base_de_dados$atraso_chegada[1] == 0) {
+  "Chegou na hora"
+} else if (base_de_dados$atraso_chegada[1] < 10) {
+  "Atrasou um poquinho"
+} else if (base_de_dados$atraso_chegada[1] < 30) {
+  "Atrasou moderadamente"
+} else {
+  "Atrasou muito"
+}
+  
+# dplyr::case_when()
+
+
 # Exercícios --------------------------------------------------------------
 
-# 1. Imagine que você é uma pessoa professora, e quer usar o R para saber
+# 1. Imagine que você é uma pessoa professora e quer usar o R para saber
 # se as pessoas alunas foram aprovadas ou não na disciplina,
 # segundo a nota final.
 # Usando o if, preencha os campos com ... abaixo para que o if retorne:
@@ -77,19 +105,19 @@ if(hoje < carnaval){
 # e recuperação se tiver nota maior que 3 e menor que 5.
 
 
-nota <- 5 
+nota <- 4.999
 
 if(nota >= 5){
   
-  print("....")
+  print("Aprovada")
   
-} else if(....) {
+} else if(nota < 3) {
   
   print("Reprovada")
   
-} else {
+} else if (nota >= 3 & nota < 5) {
   
-  print("...")
+  print("Recuperação")
 }
 
 # 2. Continuando o exercício anterior: 
@@ -104,23 +132,33 @@ if(nota >= 5){
 
 # Vamos carregar mais uma base! Voos de fevereiro
 
-base_de_dados_fev <- read_csv2("dados/voos_de_fevereiro.csv")
+library(readr)
 
-head(base_de_dados_fev)
+base_de_dados_fev <- read_csv2("dados/voos_de_fevereiro.csv")
+base_de_dados_fev <- read.csv2("dados/voos_de_fevereiro.csv")
+
+head(base_de_dados_fev) 
+# muito útil para ver a base no console quando o objeto é só data.frame (não é tibble)
 
 
 # Queremos juntar as bases com dados de janeiro em fevereiro, e uma única base.
 # a base contém as mesmas colunas!
 # usar a funcao rbind() (de row bind)
 
-base_jan_fev <- rbind(base_de_dados, base_de_dados_fev)
+base_de_dados_fev2 <- base_de_dados_fev[ ,-1]
+base_de_dados_fev2 <- base_de_dados_fev[ , c(2, 1, 3:19)]
+
+
+base_jan_fev <- rbind(base_de_dados, base_de_dados_fev2)
 
 # E se eu quiser adicionar uma nova coluna? 
 # cbind()   (de column bind)
 
 nome_mes <- "janeiro"
+nome_mes <- rep("janeiro", 27004)
 cbind(base_de_dados, nome_mes)
 
+1 + 
 
 # Valores especiais -------------------------------------------------------
 
@@ -166,6 +204,21 @@ is.nan(NaN)
 is.infinite(10 ^ 309)
 is.null(NULL)
 
+NA + 1
+mean(c(NA, 2, 3))
+
+as.numeric(FALSE)
+
+sum(is.na(base_de_dados$atraso_chegada))
+
+library(dplyr)
+
+filter(base_de_dados, !is.na(atraso_chegada))
+
+View(filter(base_de_dados, !is.na(atraso_chegada)))
+
+base_de_dados[!is.na(base_de_dados$atraso_chegada), ]
+
 
 # Dataframes e funções ------------
 
@@ -189,7 +242,10 @@ sum(is.na(base_de_dados$atraso_chegada)) # Quantos NA tem na coluna?
 # Algumas funções possuem um argumento para remover os NA:
 # na.rm = TRUE
 
+filter()
+
 # Qual é a soma ....?
+sum(base_de_dados$atraso_chegada)
 sum(base_de_dados$atraso_chegada, na.rm = TRUE)
 
 # Menor valor encontrado: o menor número encontrado na coluna
@@ -200,6 +256,10 @@ max(base_de_dados$atraso_chegada, na.rm = TRUE)
 
 # Média 
 mean(base_de_dados$atraso_chegada, na.rm = TRUE)
+
+vetor <- c(2, 5, 3, NA)
+
+mean(vetor, na.rm = TRUE)
 
 # Mediana 
 median(base_de_dados$atraso_chegada, na.rm = TRUE)
