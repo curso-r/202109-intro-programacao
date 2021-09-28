@@ -274,3 +274,11 @@ sd(base_de_dados$atraso_chegada, na.rm = TRUE)
 # Exercícios ------------------------------------------
 # 1. Calcule o valor mínimo e valor máximo da coluna "atraso_saida". O que 
 # esses valores significam?
+
+library(readr)
+base_de_dados <- suppressMessages(read_csv2("dados/voos_de_janeiro.csv"))
+
+base_de_dados$atraso_saida
+
+min(base_de_dados$atraso_saida, na.rm = TRUE)
+max(base_de_dados$atraso_saida, na.rm = TRUE)

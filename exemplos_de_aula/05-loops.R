@@ -23,7 +23,7 @@
 # escopo ou contexto: os números de 1 a 10. Vamos repetir uma ação (imprimir) para cada um dos pedaços
 # do nosso escopo
 
-for (i in 1:10) {
+for (i in c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
 # escopo: números de 1 a 10, representados pela letra "i"
   
   print(i)
@@ -32,7 +32,7 @@ for (i in 1:10) {
 
 # a AÇÃO sempre deve se aplicar a um elemento nosso contexto. vamos a mais elementos de ACAO, sem mudar o contexto:
 
-for (i in 1:10) {
+for (i in 1:9) {
   # escopo: números de 1 a 10, representados pela letra "i"
   
   # DAQUI PRA BAIXO VEM A AÇÃO:
@@ -41,12 +41,19 @@ for (i in 1:10) {
   # a ação pode ter quantas linhas você quiser, é um trecho de código em que aplicam as mesmas regras
   # que estamos estudando até agora
   
-  # podemos criar uma variável, por exemplo!
-  
   print(quadrado_de_i)
+  # podemos criar uma variável, por exemplo!
   # terminamos igual fizemos na última vez: imprimindo algo no console
   
 }
+
+quadrado_de_i <- 1^2
+quadrado_de_i <- 2^2
+quadrado_de_i <- 3^2
+quadrado_de_i <- 4^2
+#...
+quadrado_de_i <- 10^2
+
 
 # outro exemplo de ação
 
@@ -92,15 +99,15 @@ for (i in 1:10) {
 # VARIAVEL, aqui chamamos de i
 # o 1:10 representa o VETOR_TOTAL
   
-  print(i)
+  print("Oi!")
   # nossa ação. precissa mencionar a letra i
 }
 
 # você pode inclusive criar o VETOR_TOTAL fora do loop:
 
-aonde_vou_iterar <- 1:10
+onde_vou_iterar <- 1:10
 
-for (i in aonde_vou_iterar) {
+for (i in onde_vou_iterar) {
   # VARIAVEL, aqui chamamos de i
   # o 1:10 representa o VETOR_TOTAL
   
@@ -110,9 +117,9 @@ for (i in aonde_vou_iterar) {
 
 # VETOR_TOTAL pode até não ter números
 
-aonde_vou_iterar <- c("a", "b", "c", "d", "e", "f")
+onde_vou_iterar <- c("a", "b", "c", "d", "e", "f")
 
-for (i in aonde_vou_iterar) {
+for (i in onde_vou_iterar) {
   # VARIAVEL, aqui chamamos de i
   # o 1:10 representa o VETOR_TOTAL
   
@@ -122,10 +129,10 @@ for (i in aonde_vou_iterar) {
 
 # PRESTE ATENÇÃO! A ORDEM IMPORTA!
 
-aonde_vou_iterar <- c("c", "a", "d", "b", "e", "f")
+onde_vou_iterar <- c("c", "a", "d", "b", "e", "f")
 # embaralhamos a ordem das letras
 
-for (i in aonde_vou_iterar) {
+for (i in onde_vou_iterar) {
   # VARIAVEL, aqui chamamos de i
   # o 1:10 representa o VETOR_TOTAL
   
@@ -136,10 +143,10 @@ for (i in aonde_vou_iterar) {
 # o VARIAVEL, pode ter qualquer nome também! você só precisa se lembrar de fazer menção a ela
 # na ação
 
-aonde_vou_iterar <- c("c", "a", "d", "b", "e", "f")
+onde_vou_iterar <- c("c", "a", "d", "b", "e", "f")
 # embaralhamos a ordem das letras
 
-for (variavel in aonde_vou_iterar) {
+for (variavel in onde_vou_iterar) {
   # VARIAVEL, aqui chamamos de i
   # o 1:10 representa o VETOR_TOTAL
   
@@ -152,8 +159,14 @@ for (variavel in aonde_vou_iterar) {
 
 # 1. Crie um script que imprima o texto "Esse aqui é o número XX", onde XX varia de 1 a 50.
 
-# 2. Crie um script que calcule o quadrado dos números de 7 a 31, calcule o quadrado desses números e imprima na tela
-# Cada ver que a nossa AÇÃO for executada (calcular o quadrado), escreva seu programa de tal maneira que
+for(XX in 1:50) {
+  texto <- paste("Esse aqui é o número", XX)
+  print(texto)
+}
+
+
+# 2. Crie um script que calcule o quadrado dos números de 7 a 31 e imprima na tela
+# Cada vez que a nossa AÇÃO for executada (calcular o quadrado), escreva seu programa de tal maneira que
 # o computador indique o que está fazendo, conforme o esquema abaixo:
 
 # "Iniciando ação",
@@ -165,6 +178,17 @@ for (variavel in aonde_vou_iterar) {
 # "Iniciando ação"
 # "Calculando o quadrado de 31"
 # "O quadrado de 31 vale 961"
+
+for(XX in 7:31) {
+  print("Iniciando ação")
+  print(paste("Calculando o quadrado de", XX))
+  YY <- XX ^ 2
+  print(paste("O quadrado de", XX, "vale", YY))
+  print("----------------------------------------")
+}
+
+# -------------------------------------------------------------------------
+
 
 # Mais utilidades do for
 
@@ -182,15 +206,18 @@ for(arquivo in arquivos_de_dados){
 # VARIAVEL aqui levou esse nome "arquivo"
 # VETOR_TOTAL aqui levou o nome "arquivos_de_dados"
   
-  dados <- read_csv2(arquivo)
+  dados <- suppressMessages(read_csv2(arquivo))
   
-  maior_atraso <- max(dados$atraso_saida)
+  maior_atraso <- max(dados$atraso_saida, na.rm = TRUE)
   
   texto_de_saida <- paste0("O maior atraso no arquivo ", arquivo, " é ", maior_atraso)
   
   print(texto_de_saida)
   
 }
+
+
+
 
 # o que não está muito legal nesse código?
 
@@ -260,8 +287,60 @@ for(arquivo in arquivos){
 
 # Exercícios --------------------------------------------------------------
 
-# 1. Inclua no nosso loop os arquivos que indo até junho
+# 1. Inclua no nosso loop os arquivos indo até junho
 
-# 2. Adapte o script anterior para que ele imprima os maiores atrasos e também os voos que saíram mais adiantados.
+arquivos <- c(
+  "dados/voos_de_janeiro.csv",
+  "dados/voos_de_fevereiro.csv",
+  "dados/voos_de_marco.csv",
+  "dados/voos_de_abril.csv",
+  "dados/voos_de_maio.csv",
+  "dados/voos_de_junho.csv"
+)
+
+# 2. Adapte o script anterior para que ele imprima os maiores atrasos 
+# e também os voos que saíram mais adiantados.
+
+for(arquivo in arquivos) {
+  
+  dados <- suppressMessages(read_csv2(arquivo))
+  
+  maior_atraso <- max(dados$atraso_saida, na.rm = TRUE)
+  maior_antecedencia <- abs(min(dados$atraso_saida, na.rm = TRUE))
+  
+  texto_de_saida_max <- paste0("O maior atraso no arquivo ", arquivo, " é ", maior_atraso)
+  texto_de_saida_min <- paste0("A maior antecedência no arquivo ", arquivo, " é ", maior_antecedencia)
+  
+  print(texto_de_saida_max)
+  print(texto_de_saida_min)
+  print("--------------------------")
+  
+}
+
 
 # Dica: Na nossa base de dados um valor negativo na coluna "atraso_saida" indica que o voo saiu adiantado
+
+
+for(arquivo in arquivos) {
+  
+  dados <- suppressMessages(read_csv2(arquivo))
+  
+  maior_atraso <- max(dados$atraso_saida, na.rm = TRUE)
+  texto_de_saida_max <- paste0("O maior atraso no arquivo ", arquivo, " é ", maior_atraso)
+  
+  
+  maior_antecedencia <- min(dados$atraso_saida, na.rm = TRUE)
+  
+  if (maior_antecedencia < 0) {
+    maior_antecedencia <- abs(maior_antecedencia)
+    texto_de_saida_min <- paste0("A maior antecedência no arquivo ", arquivo, " é ", maior_antecedencia)
+  } else {
+    texto_de_saida_min <- paste0("Nenhum voo saiu com antecedencia no arquivo ", arquivo)
+  }
+  
+  print(texto_de_saida_max)
+  print(texto_de_saida_min)
+  print("--------------------------")
+  
+}
+

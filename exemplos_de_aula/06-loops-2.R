@@ -1,5 +1,48 @@
 # for + if é bem poderoso
 
+if(base_de_dados$atraso_chegada[1] < 0) {
+  "Chegou com antecedência"
+} else if (base_de_dados$atraso_chegada[1] == 0) {
+  "Chegou na hora"
+} else if (base_de_dados$atraso_chegada[1] < 10) {
+  "Atrasou um poquinho"
+} else if (base_de_dados$atraso_chegada[1] < 30) {
+  "Atrasou moderadamente"
+} else {
+  "Atrasou muito"
+}
+
+atraso_chegada_categ <- NULL
+
+for (valor in base_de_dados$atraso_chegada) {
+  
+  if (is.na(valor)) {
+    categoria <- NA
+  } else if(valor < 0) {
+    categoria <- "Chegou com antecedência"
+  } else if (valor == 0) {
+    categoria <- "Chegou na hora"
+  } else if (valor < 10) {
+    categoria <- "Atrasou um poquinho"
+  } else if (valor < 30) {
+    categoria <- "Atrasou moderadamente"
+  } else {
+    categoria <- "Atrasou muito"
+  }
+  
+  atraso_chegada_categ <- c(atraso_chegada_categ, categoria)
+}
+
+base_atrasos <- data.frame(
+  atraso_chegada = base_de_dados$atraso_chegada,
+  atraso_chegada_categ = atraso_chegada_categ
+)
+
+View(base_atrasos)
+
+base_de_dados$atraso_chegada_categ <- atraso_chegada_categ
+
+
 # existe uma outra maneira de usar o for, que é bem poderosa também: podemos 
 # ir evoluindo nossas variáveis passo a passo.
 
@@ -14,11 +57,20 @@ for(i in 1:30){
   
   print(paste0("soma_de_1_a_30 está valendo ", soma_de_1_a_30))
   
-  soma_de_1_a_30 <- soma_de_1_a_30+i
+  soma_de_1_a_30 <- soma_de_1_a_30 + i
   
   print(paste0("Atualizei o soma_de_1_a_30, somando o valor de i, que é ", i))
+  print("--------------")
   
 }
+
+# 0 + 1
+# 1 + 2
+# 3 + 3
+# 6 + 4
+
+soma_de_1_a_30
+sum(1:30)
 
 # em cada passo:
 
@@ -28,6 +80,8 @@ for(i in 1:30){
 # Outro exemplo:
 
 # Vamos criar um vetor que tenha o atraso médio em cada um dos aeroportos de origem da tabela "voos_em_janeiro.csv"
+
+
 
 # Mas primeiro... Como a gente descobre quais são os aeroportos disponiveis?
 
@@ -109,7 +163,11 @@ for(aeroporto in lista_de_aeroportos){
   print(paste0("Vetor ao final do cálculo do aeroporto ", aeroporto, ":"))
   print(vetor_de_medias)
   
+  print("-----------------------")
+  
 }
+
+vetor_de_medias
 
 # agora entrou ao contrário, por causa do jeito que escrevemos na linha 96
 # falando nisso, é claro que a gente poderia também simplesmente não gerar esse vetor!
