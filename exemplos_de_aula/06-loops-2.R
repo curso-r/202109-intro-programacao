@@ -134,6 +134,8 @@ tabela_de_medias_por_aeroporto <- data.frame(
   atraso_medio = vetor_de_medias
 )
 
+tabela_de_medias_por_aeroporto
+
 # podemos ver que o aeroporto LGA costuma ser mais pontual do que o JFK, onde o atraso chega quase a 15 minutos
 
 # poderíamos fazer ao contrário também:

@@ -80,7 +80,7 @@ tibble::tibble(
     script
   )
 ) %>%
-  dplyr::slice(1:4) %>% 
+  dplyr::slice(1:6) %>% 
   knitr::kable()
 
 ```

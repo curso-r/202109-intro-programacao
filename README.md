@@ -46,6 +46,8 @@ e descompacte dentro da pasta do projeto.
 | 02-tabelas.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/02-tabelas.R>              |
 | 03-filtros.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/03-filtros.R>              |
 | 04-controle-de-fluxo-NA.R | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/04-controle-de-fluxo-NA.R> |
+| 05-loops.R                | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/05-loops.R>                |
+| 06-loops-2.R              | <https://curso-r.github.io/202109-intro-programacao/exemplos_de_aula/06-loops-2.R>              |
 
 ## Dados utilizados
 
